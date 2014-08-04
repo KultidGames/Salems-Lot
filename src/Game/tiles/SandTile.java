@@ -5,9 +5,9 @@ import java.awt.Graphics;
 import Game.Game;
 import Game.gfx.ImageManager;
 
-public class BrickTile extends Tile {
+public class SandTile extends Tile {
 
-	public BrickTile(ImageManager im) {
+	public SandTile(ImageManager im) {
 		super(im);
 	}
 
@@ -16,9 +16,7 @@ public class BrickTile extends Tile {
 	}
 
 	public void render(Graphics g, int x, int y) {
-		g.drawImage(im.brickTile, x, y, 16 * Game.TILESIZE, 16 * Game.TILESIZE,null);
-	}
-	public boolean isSolid(){
-		return true;
+		g.drawImage(im.sandTile, x, y, 16 * Game.TILESIZE, 16 * Game.TILESIZE,null);
 	}
 }
+

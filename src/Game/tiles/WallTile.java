@@ -1,13 +1,13 @@
 package Game.tiles;
 
 import java.awt.Graphics;
-import Game.Game;
 
+import Game.Game;
 import Game.gfx.ImageManager;
 
-public class TreeTile extends Tile {
+public class WallTile extends Tile {
 
-	public TreeTile(ImageManager im) {
+	public WallTile(ImageManager im) {
 		super(im);
 	}
 
@@ -16,10 +16,9 @@ public class TreeTile extends Tile {
 	}
 
 	public void render(Graphics g, int x, int y) {
-		g.drawImage(im.treeTile, x, y, 16 * Game.TILESIZE, 16 * Game.TILESIZE,null);
+		g.drawImage(im.wallTile, x, y, 16 * Game.TILESIZE, 16 * Game.TILESIZE,null);
 	}
 	public boolean isSolid(){
 		return true;
 	}
-
 }

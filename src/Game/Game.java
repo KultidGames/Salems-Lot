@@ -24,6 +24,7 @@ public class Game extends Canvas implements Runnable{
 	private static ImageManager im;
 	
 	private static Player player;
+	public static Level level;
 	private Level l1;
 	
 	public void init(){
@@ -34,7 +35,7 @@ public class Game extends Canvas implements Runnable{
 		
 		im = new ImageManager(ss);
 		
-		player = new Player(0, 0, im);
+		player = new Player(WIDTH * SCALE / 2, HEIGHT * SCALE / 2 - 32, im);
 		BufferedImage limage = loader.load("/level.png");
 		l1 = new Level(limage);
 		this.addKeyListener(new KeyManager());
@@ -108,6 +109,10 @@ public class Game extends Canvas implements Runnable{
 		
 		game.start();
 	}
+	
+	public static Level getLevel(){
+		return level;
+	}
 	public static Player getPlayer(){
 		return player;
 	}
@@ -115,3 +120,5 @@ public class Game extends Canvas implements Runnable{
 		return im;
 	}
 }
+//On Collision Detection
+//https://www.youtube.com/watch?v=MDKbwnGNX_s

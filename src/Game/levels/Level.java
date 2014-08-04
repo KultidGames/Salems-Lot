@@ -41,6 +41,12 @@ public class Level {
 				case "844204"://Tree - 5
 					tiles[x][y] = 5;
 					break;
+				case "fffc9f"://Sand - 6
+					tiles[x][y] = 6;
+					break;
+				case "000000"://Wall - 7
+					tiles[x][y] = 7;
+					break;
 				default:
 					tiles[x][y] = 3;
 					break;
@@ -53,6 +59,11 @@ public class Level {
 	public void render(Graphics g){
 		int xo = Game.getPlayer().getXo();
 		int yo = Game.getPlayer().getYo();
+		
+		int x0 = Math.max(xo / (Game.TILESIZE * Game.SCALE), 0);
+		int y0 = Math.max(yo / (Game.TILESIZE * Game.SCALE), 0);
+		int x1 = Math.min((xo + Game.WIDTH * Game.SCALE) / (Game.TILESIZE * Game.SCALE) + 1, w);
+		int y1 = Math.min((yo + Game.WIDTH * Game.SCALE) / (Game.TILESIZE * Game.SCALE) + 1, h);
 		
 		for(int y = 0; y < h;y++){
 			for(int x = 0; x < w;x++){
@@ -73,6 +84,10 @@ public class Level {
 			return Tile.water;
 		case 5:
 			return Tile.tree;
+		case 6:
+			return Tile.sand;
+		case 7:
+			return Tile.wall;
 		default:
 			return Tile.brick;
 		}

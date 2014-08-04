@@ -38,8 +38,10 @@ public class Player{
 	}
 	
 	public void move(int xs, int ys){
+		//if(!Game.getLevel().getTile((xo + xs + x) / (16 * Game.SCALE), (yo + ys + y) / (16 * Game.SCALE)).isSolid()){
 		xo += xs;
 		yo += ys;
+		//}
 	}
 	public int getXo(){
 		return xo;
