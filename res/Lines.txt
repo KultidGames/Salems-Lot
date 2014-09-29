@@ -1,0 +1,8 @@
+There's nothing in here...
+The Door seems to be locked!
+Hey, What's this?
+
+Key Found!
+Candle Found!
+Shovel Found!
+Ouija Board Found!

@@ -16,6 +16,6 @@ public class PlankTile extends Tile {
 	}
 
 	public void render(Graphics g, int x, int y) {
-		g.drawImage(im.plankTile, x, y, 16 * Game.TILESIZE, 16 * Game.TILESIZE,null);
+		g.drawImage(im.plankTile, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE,null);
 	}
 }

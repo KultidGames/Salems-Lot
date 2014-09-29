@@ -16,7 +16,7 @@ public class TreeTile extends Tile {
 	}
 
 	public void render(Graphics g, int x, int y) {
-		g.drawImage(im.treeTile, x, y, 16 * Game.TILESIZE, 16 * Game.TILESIZE,null);
+		g.drawImage(im.treeTile, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE,null);
 	}
 	public boolean isSolid(){
 		return true;

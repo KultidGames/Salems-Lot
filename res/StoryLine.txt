@@ -1,0 +1,10 @@
+-Name Char
+-Char is driving on a road
+-Car breaks down in fog 
+
+Car almost hits zombie, fog rolls in, zombies form a horde, chase the char
+who follows the road to the castle
+
+=WRITE CHARS NAME HERE=
+-save to .txt file
+Bring up name for dialog
