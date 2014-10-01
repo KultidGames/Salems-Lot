@@ -55,16 +55,32 @@ public class Player{
 		move(xs, ys);
 		
 		if (isSwimming){
+			if (dn){
 			swimDown.tick();
+			}
+			if (up){
 			swimUp.tick();
+			}
+			if (lt){
 			swimLeft.tick();
+			}
+			if (rt){
 			swimRight.tick();
-		}if (!isSwimming){
+			}
+		}
+		if (!isSwimming){
+		 if (up){	
 			upAnimation.tick();
+		} if (dn){	
 			downAnimation.tick();
+		} if (lt){	
 			leftAnimation.tick();
+		}if (rt){	
 			rightAnimation.tick();
+		}else{
 			idle.tick();
+		
+		}
 		}
 	}
 	public void move(int xs, int ys){
@@ -110,7 +126,7 @@ public class Player{
 	            swimLeft.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        }
 	    }       
-		else if (!isSwimming){
+		if (!isSwimming){
 	        if(up){
 	            upAnimation.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        } 
@@ -122,10 +138,9 @@ public class Player{
 	        }
 	        if (lt){
 	            leftAnimation.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
-	    } else
+	        } else
 	            idle.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
-
-	}
+			}
 	}
 	public int getXo(){
 		return xo;
