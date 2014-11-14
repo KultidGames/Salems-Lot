@@ -13,7 +13,7 @@ import Game.gfx.ImageLoader;
 import Game.gfx.ImageManager;
 import Game.gfx.SpriteSheet;
 import Game.levels.Level;
-
+import Game.gfx.Sound;
 public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 180, HEIGHT = 150, SCALE = 6, TILESIZE = 16;
@@ -23,7 +23,7 @@ public class Game extends Canvas implements Runnable{
 	private BufferedImage spriteSheet, bkgrnd;
 	public static BufferedImage logo, play, help, quit, pauseimg, menuimg, settings, back;
 	private static ImageManager im;
-	private BufferedImage H10, H9, H8, H7, H6, H5, H4, H3, H2, H1, Death;
+	private BufferedImage H10, H9, H8, H7, H6, H5, H4, H3, H2, H1, Death, Hearts;
 	
 	private Menu menu;
 	private Menu pause;
@@ -31,6 +31,7 @@ public class Game extends Canvas implements Runnable{
 	
 	private static Player player;
 	public static Level level;
+	public final String version = "Conceptiualization - 1.0";
 	
 	
 	
@@ -66,7 +67,9 @@ public class Game extends Canvas implements Runnable{
 		H3 = loader.load("/Hearts/H3.png");
 		H2 = loader.load("/Hearts/H2.png");
 		H1 = loader.load("/Hearts/H1.png");
-		Death = loader.load("/Hearts/Death.png");
+		Death = loader.load("/Hearts/Death.png"); 
+		
+	//	Hearts = loader.load("/Hearts/H" + Player.health + ".png");
 		
 		
 		SpriteSheet ss = new SpriteSheet(spriteSheet);
@@ -76,16 +79,17 @@ public class Game extends Canvas implements Runnable{
 		player = new Player(WIDTH * SCALE / 2 - 55, HEIGHT * SCALE / 2 - 85, im); //Can Change Area
 		this.addKeyListener(new KeyManager());
 		this.addMouseListener(new MouseInput());
+		
 		level = new Level (loader.load("/level.png"));
 		
 		menu = new Menu();
 	}
-	
 	public synchronized void start(){
 		if(running)return;
 		running = true;
 		gameThread = new Thread(this);
 		gameThread.start();
+		Sound.ForYou.play();
 	}
 	public synchronized void stop(){
 		if(!running)return;
@@ -128,34 +132,33 @@ public class Game extends Canvas implements Runnable{
 		
 		Graphics g = bs.getDrawGraphics();
 		//RENDER HERE
-		
 		if(State == STATE.GAME){		
 		g.fillRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE);
 		level.render(g);
 		player.render(g);
-			if (Player.health == 10){
+			if (Player.health == 10)
 				g.drawImage(H10, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 9) {
+		     if (Player.health == 9) 
 				g.drawImage(H9, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 8) {
+		     if (Player.health == 8) 
 				g.drawImage(H8, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 7) {
+		     if (Player.health == 7) 
 				g.drawImage(H7, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 6) {
+		     if (Player.health == 6) 
 				g.drawImage(H6, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 5) {
+		     if (Player.health == 5) 
 				g.drawImage(H5, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 4) {
+		     if (Player.health == 4) 
 				g.drawImage(H4, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 3) {
+			 if (Player.health == 3) 
 				g.drawImage(H3, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 2) {
+			 if (Player.health == 2) 
 				g.drawImage(H2, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 1) {
+			 if (Player.health == 1) 
 				g.drawImage(H1, -1, 795,150 * 5, 11 * 5, null);
-			} else if (Player.health == 0) {
+			 if (Player.health == 0) 
 				g.drawImage(H1, -1, 795,150 * 5, 11 * 5, null);
-			}
+			
 		}else if (State == STATE.MENU){
 			g.drawImage(bkgrnd, 0, 0, WIDTH * SCALE , HEIGHT * SCALE, this);
 			g.drawImage(logo, 325, 85, 125 * SCALE , 75 * SCALE, null);
