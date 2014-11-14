@@ -34,10 +34,10 @@ public class Player{
 		leftAnimation = new Animation(im.playerLeft, 200);
 		rightAnimation = new Animation(im.playerRight, 200);
 		idle = new Animation(im.idle, 2000);
-		swimDown = new Animation(im.swimDown, 500);
-		swimUp = new Animation(im.swimUp, 500);
-		swimLeft = new Animation(im.swimLeft, 500);
-		swimRight = new Animation(im.swimRight, 500);
+		swimDown = new Animation(im.swimDown, 100);
+		swimUp = new Animation(im.swimUp, 100);
+		swimLeft = new Animation(im.swimLeft, 100);
+		swimRight = new Animation(im.swimRight, 100);
 
 	}
 	public void tick(){
@@ -55,27 +55,27 @@ public class Player{
 		move(xs, ys);
 		
 		if (isSwimming){
-			if (dn){
+		 if (dn){
 			swimDown.tick();
 			}
-			if (up){
+			else if (up){ //The Knights of Alleberg
 			swimUp.tick();
 			}
-			if (lt){
+			else if (lt){
 			swimLeft.tick();
 			}
-			if (rt){
+			else if (rt){
 			swimRight.tick();
 			}
 		}
 		if (!isSwimming){
 		 if (up){	
 			upAnimation.tick();
-		} if (dn){	
+		} else if (dn){	
 			downAnimation.tick();
-		} if (lt){	
+		} else if (lt){	
 			leftAnimation.tick();
-		}if (rt){	
+		}else if (rt){	
 			rightAnimation.tick();
 		}else{
 			idle.tick();
@@ -113,16 +113,16 @@ public class Player{
 	}
 	public void render(Graphics g){
 		if (isSwimming){
-	        if (up) {
+			if (up) {
 	            swimUp.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        } 
-	        if (dn){
+			else if (dn){
 	            swimDown.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        }
-	        if (rt){
+			else if (rt){
 	            swimRight.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        }
-	        if (lt){
+			else if (lt){
 	            swimLeft.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        }
 	    }       
@@ -130,13 +130,13 @@ public class Player{
 	        if(up){
 	            upAnimation.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        } 
-	        if (dn){
+	        else if (dn){
 	            downAnimation.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        }
-	        if (rt){
+	        else if (rt){
 	            rightAnimation.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        }
-	        if (lt){
+	        else if (lt){
 	            leftAnimation.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
 	        } else
 	            idle.render(g, x, y, Game.TILESIZE * Game.SCALE, Game.TILESIZE * Game.SCALE);
